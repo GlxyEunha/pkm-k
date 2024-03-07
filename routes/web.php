@@ -33,6 +33,10 @@ Route::get('panduan', function () {
     return view('panduan');
 });
 
+Route::get('Login/index', function () {
+    return view('Login.index');
+});
+
 Route::get('main', function () {
     return view('layouts.main');
 });

@@ -21,7 +21,7 @@
                 </button>
                 <div class="navbar-collapse navbar">
                     <ul class="navbar-nav">
-                        <li class="nav-item dropdown">
+                        {{-- <li class="nav-item dropdown">
                             <a href="#" data-bs-toggle="dropdown" class="nav-icon pe-md-0">
                                 <img src="/image/profile.jpg" class="avatar img-fluid rounded" alt="">
                             </a>
@@ -30,6 +30,10 @@
                                 <a href="#" class="dropdown-item">Setting</a>
                                 <a href="#" class="dropdown-item">Logout</a>
                             </div>
+                        </li> --}}
+                        <li class="nav-item">
+                            <a href="/Login/index"><i class="bi bi-box-arrow-in-right"></i>
+                              Login</a>
                         </li>
                     </ul>
                 </div>
