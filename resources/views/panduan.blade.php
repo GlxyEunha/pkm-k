@@ -28,10 +28,10 @@
                 </button>
                 <div class="navbar-collapse navbar">
                     <ul class="navbar-nav">
-                        <li class="nav-item">
+                        {{-- <li class="nav-item">
                             <a href="/Login/index"><i class="bi bi-box-arrow-in-right"></i>
                               Login</a>
-                        </li>
+                        </li> --}}
                     </ul>
                 </div>
             </nav>
@@ -41,7 +41,9 @@
                         <h4>Buku Panduan PKM-K</h4>
                     </div>
                     <div>
-                        <embed src="/panduan.pdf" type="application/pdf">
+                        @if($panduan->isNotEmpty())
+                            <embed src="{{ url('/file_panduan/'.$panduan->first()->file) }}" type="application/pdf">
+                        @endif
                     </div>
                 </div>
             </main>

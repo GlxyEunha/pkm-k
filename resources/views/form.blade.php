@@ -10,6 +10,8 @@
     <script src="https://kit.fontawesome.com/ae360af17e.js" crossorigin="anonymous"></script>
     <script src="https://cdnjs.cloudflare.com/ajax/libs/jquery/3.6.0/jquery.min.js" integrity="sha512-894YE6QWD5I59HgZOGReFYm4dnWc1Qt5NtvYSaNcOP+u1T9qYdvdihz0PPSiiqn/+/3e7Jo4EaG7TubfWGUrMQ==" crossorigin="anonymous" referrerpolicy="no-referrer"></script>
     <script src="https://cdnjs.cloudflare.com/ajax/libs/parsley.js/2.9.2/parsley.min.js" integrity="sha512-eyHL1atYNycXNXZMDndxrDhNAegH2BDWt1TmkXJPoGf1WLlNYt08CSjkqF5lnCRmdm3IrkHid8s2jOUY4NIZVQ==" crossorigin="anonymous" referrerpolicy="no-referrer"></script>
+    <link rel="stylesheet" type="text/css" href="/css/trix.css">
+    <script type="text/javascript" src="/js/trix.js"></script>
     <style>
         .form-section{
             display: none;
@@ -35,10 +37,10 @@
                 </button>
                 <div class="navbar-collapse navbar">
                     <ul class="navbar-nav">
-                      <li class="nav-item">
+                      {{-- <li class="nav-item">
                         <a href="/Login/index"><i class="bi bi-box-arrow-in-right"></i>
                           Login</a>
-                      </li>
+                      </li> --}}
                     </ul>
                 </div>
             </nav>
@@ -110,6 +112,8 @@
                             </div>
                             <div class="form-section">
                                 <label for="">Latar Belakang:</label>
+                                {{-- <input id="latbel" type="hidden" name="latbel">
+                                <trix-editor input="latbel"></trix-editor> --}}
                                 <textarea name="latbel" class="form-control mb-3" required></textarea>
                             </div>
                           <div class="form-navigation mt-3">

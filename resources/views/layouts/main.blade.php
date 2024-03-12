@@ -31,10 +31,10 @@
                                 <a href="#" class="dropdown-item">Logout</a>
                             </div>
                         </li> --}}
-                        <li class="nav-item">
+                        {{-- <li class="nav-item">
                             <a href="/Login/index"><i class="bi bi-box-arrow-in-right"></i>
                               Login</a>
-                        </li>
+                        </li> --}}
                     </ul>
                 </div>
             </nav>
