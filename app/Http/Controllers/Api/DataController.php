@@ -33,36 +33,95 @@ class DataController extends Controller
      * @return void
      */
     public function store(Request $request){
-        //define validation rules
-        $validator = Validator::make($request->all(), [
-            "judul" => 'required|string',
-            "nama_ketua" => 'required|string',
-            "nim_ketua" => 'required|string',
-            "jurusan_ketua" => 'required|string',
-            "univ_ketua" => 'required|string',
-            "alamat_ketua" => 'required|string',
-            "hp_ketua" => 'required|string',
-            "email_ketua" => 'required|email',
-            "jml_anggota" => 'required|string',
-            "dosbing" => 'required|string',
-            "nidn" => 'required|string',
-            "alamat_dosen" => 'required|string',
-            "hp_dosen" => 'required|string',
-            "dikti" => 'required|string',
-            "sumber_lain" => 'required|string',
-            "waktu_kerja" => 'required|string',
-            "kota" => 'required|string',
-            "tanggal" => 'required|date',
-            "latbel" => 'required|string',
+        // update store function
+
+        // cek apakah
+        
+        //validation success
+        $judul = $request->judul;
+        $nama_ketua = $request->nama_ketua;
+        $nim_ketua = $request->nim_ketua;
+        $jurusan_ketua = $request->jurusan_ketua;
+        $univ_ketua = $request->univ_ketua;
+        $alamat_ketua = $request->alamat_ketua;
+        $hp_ketua = $request->hp_ketua;
+        $email_ketua = $request->email_ketua;
+        $jml_anggota = $request->jml_anggota;
+        $dosbing = $request->dosbing;
+        $nidn = $request->nidn;
+        $alamat_dosen = $request->alamat_dosen;
+        $hp_dosen = $request->hp_dosen;
+        $dikti = $request->dikti;
+        $sumber_lain = $request->sumber_lain;
+        $waktu_kerja = $request->waktu_kerja;
+        $kota = $request->kota;
+        $tanggal = $request->tanggal;
+        $latbel = $request->latbel;
+
+        $data = Data::create([
+            'judul' => $judul,
+            'nama_ketua' => $nama_ketua,
+            'nim_ketua' => $nim_ketua,
+            'jurusan_ketua' => $jurusan_ketua,
+            'univ_ketua' => $univ_ketua,
+            'alamat_ketua' => $alamat_ketua,
+            'hp_ketua' => $hp_ketua,
+            'email_ketua' => $email_ketua,
+            'jml_anggota' => $jml_anggota,
+            'dosbing' => $dosbing,
+            'nidn' => $nidn,
+            'alamat_dosen' => $alamat_dosen,
+            'hp_dosen' => $hp_dosen,
+            'dikti' => $dikti,
+            'sumber_lain' => $sumber_lain,
+            'waktu_kerja' => $waktu_kerja,
+            'kota' => $kota,
+            'tanggal' => $tanggal,
+            'latbel' => $latbel
         ]);
 
-        //check if validation fails
-        if ($validator->fails()) {
-            return response()->json($validator->errors(), 422);
-        }
+        $phpWord = new \PhpOffice\PhpWord\TemplateProcessor('myword.docx');
+        $phpWord->setValues([
+            'judul' => $judul,
+            'nama_ketua' => $nama_ketua,
+            'nim_ketua' => $nim_ketua,
+            'jurusan_ketua' => $jurusan_ketua,
+            'univ_ketua' => $univ_ketua,
+            'alamat_ketua' => $alamat_ketua,
+            'hp_ketua' => $hp_ketua,
+            'email_ketua' => $email_ketua,
+            'jml_anggota' => $jml_anggota,
+            'dosbing' => $dosbing,
+            'nidn' => $nidn,
+            'alamat_dosen' => $alamat_dosen,
+            'hp_dosen' => $hp_dosen,
+            'dikti' => $dikti,
+            'sumber_lain' => $sumber_lain,
+            'waktu_kerja' => $waktu_kerja,
+            'kota' => $kota,
+            'tanggal' => $tanggal,
+            'latbel' => $latbel
+        ]);
+        $phpWord->saveAs('hasilEdit.docx');
 
-        $data = Data::create($request->all());
+        // Script PHP yang menerima nama file sebagai parameter dan mengembalikan URL file
+        // $baseUrl = '/';
+        // $fileName = 'hasilEdit.docx';
+        // $fileUrl = $baseUrl . $fileName;
+        // return response()->json(['status' => 'success', 'message' => 'File berhasil diunduh', 'file_url' => $fileUrl]);
+        
+        // return new DataResource(true,'Proposal baru telah berhasil dibuat', $data);
+        return response()->file('hasilEdit.docx')->deleteFileAfterSend(true);
+        // return response()->download('hasilEdit.docx', 'hasiledit.docx', [], 'inline')->deleteFileAfterSend(true);
 
-        return new DataResource(true,'Proposal baru telah berhasil dibuat', $data);
+    }
+
+    public function show($id)
+    {
+        //find post by ID
+        $data = Data::find($id);
+
+        //return single post as a resource
+        return new DataResource(true, 'Detail Data Proposal!', $data);
     }
 }
